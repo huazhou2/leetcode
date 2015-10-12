@@ -34,6 +34,7 @@ void print(const vector<string>& result) {
 		cout<<result[i]<<endl;
 }
 int main() {
+	//test the code
 	unordered_set<string> wordDict;
 	wordDict.insert("cat");
 	wordDict.insert("cats");
