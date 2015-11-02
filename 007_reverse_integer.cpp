@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
 class Solution {
 public:
     int reverse(int x) {
@@ -12,7 +16,7 @@ public:
             x=x/10;
         }
         int result=0;
-        for (auto it=digits.begin();it!= digits.end(); it++){
+        for (vector<int>::iterator it=digits.begin();it!= digits.end(); it++){
             result+= *it*pow(10,digits.end()-it-1);
         }
         if (result<0)
@@ -20,3 +24,10 @@ public:
         return result*nega;
         }
 };
+
+int main() {
+	int num=2030;
+	Solution m;
+	cout<<"num:  "<<num<<"   reverse:  "<<m.reverse(num)<<endl;
+	}
+	

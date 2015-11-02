@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 class Solution {
 public:
     bool isPalindrome(int x) {
@@ -10,7 +12,13 @@ public:
        }
        if (rev==x) return true;
        else return false;
-       
-        
     }
 };
+
+int main() {
+	int num=1000;
+	Solution m;
+	cout<<num<<" "<<(m.isPalindrome(num)?"Yes":"No")<<endl;
+	num=1221;
+	cout<<num<<" "<<(m.isPalindrome(num)?"Yes":"No")<<endl;
+	}

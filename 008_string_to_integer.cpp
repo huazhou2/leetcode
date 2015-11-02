@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
 class Solution {
 public:
     int myAtoi(string str) {
@@ -29,3 +33,9 @@ public:
         return sign*final;
     }
 };
+
+int main () {
+	string s("320.1025");
+	Solution m;
+	cout<<s<<"\t" <<m.myAtoi(s)<<endl;
+	}
