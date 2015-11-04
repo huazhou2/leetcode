@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+select distinct(t10.Num) as Num from (select t1.id, t1.Num from Logs t1
+    inner join Logs t2
+    on t1.Id=t2.Id+1
+where t1.Num=t2.Num) t10
+inner join 
+(select t1.id, t1.Num from Logs t1
+    inner join Logs t2
+    on t1.Id=t2.Id+2
+where t1.Num=t2.Num) t20
+on t10.id=t20.id;
