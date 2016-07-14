@@ -1,17 +1,6 @@
 # Write your MySQL query statement below
-set @row_number=0;
-select t1.Score, t3.Rank from Scores t1
-left join 
-(select Score,  (@row_number:=@row_number+1) as Rank from 
-(select distinct(Score) from scores
-order by score desc) t2) t3
-on t1.Score=t3.Score
-order by score desc;# Write your MySQL query statement below
-set @row_number=0;
-select t1.Score, t3.Rank from Scores t1
-left join 
-(select Score,  (@row_number:=@row_number+1) as Rank from 
-(select distinct(Score) from scores
-order by score desc) t2) t3
-on t1.Score=t3.Score
-order by score desc;
+select Score, case 
+    when @score!=(@score:=score) then @rank:=1+@rank
+    else @rank
+    end as Rank from Scores, (select @score:=-1, @rank:=0) as init 
+order by Score desc;

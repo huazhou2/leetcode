@@ -1,0 +1,31 @@
+# Write your MySQL query statement below
+select t3.Name as Department, t2.name as Employee,t2.Salary from (select * from (select Name, Salary, departmentid from Employee 
+order by departmentid, salary desc) t1
+where departmentid is not null
+group by departmentid) as t2 
+left join Department t3
+on t2.DepartmentId=t3.Id;
+
+
+select t2.Name, t2.salary, t2.departmentid from Employee t2,
+(select max(salary) as salary, departmentid from Employee
+group by Departmentid) t1
+where t2.departmentid =t1.departmentid and t1.salary=t2.salary;
+
+
+select t4.Name as Department, t3.name as Employee,t3.Salary from (select t2.Name, t2.salary, t2.departmentid from Employee t2,
+(select max(salary) as salary, departmentid from Employee
+group by Departmentid) t1
+where t2.departmentid =t1.departmentid and t1.salary=t2.salary) as t3
+left join Department t4
+on t3.DepartmentId=t4.Id;
+elect
+d.Name, e.Name, e.Salary
+from
+Department d,
+Employee e,
+(select MAX(Salary) as Salary,  DepartmentId as DepartmentId from Employee GROUP BY DepartmentId) h
+where
+e.Salary = h.Salary and
+e.DepartmentId = h.DepartmentId and
+e.DepartmentId = d.Id;
