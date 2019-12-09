@@ -4,3 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        res=1
+        for i in range(len(nums)):
+            cnt=1
+            while nums[i]!=nums[nums[i]]:
+                cur=nums[i]
+                nums[i],nums[cur]=nums[cur],nums[i]
+                cnt+=1
+            res=max(res,cnt)
+        return res  
