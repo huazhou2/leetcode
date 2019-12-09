@@ -7,13 +7,14 @@
 
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
-        def helper(inorder,postorder):
+        def helper(inorder, postorder):
             if not inorder:
                 return None
-            root=postorder.pop()
-            head=TreeNode(root)
-            ind=inorder.index(root)
-            head.left=helper(inorder[:ind],postorder)
-            head.right=helper(inorder[ind+1:],postorder)
+            root = postorder.pop()
+            head = TreeNode(root)
+            ind = inorder.index(root)
+            head.left = helper(inorder[:ind], postorder[:ind])
+            head.right = helper(inorder[ind + 1:], postorder[ind:])
             return head
-        return helper(inorder,postorder)
+
+        return helper(inorder, postorder)
